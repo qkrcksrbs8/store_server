@@ -5,12 +5,10 @@ const router = express();
 const bodyParser = require("body-parser"); // npm i body-parser
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
+const store = require('./src/controllers/StoreController');
 
-//테스트 라우터
-router.get('/store/test', (req, res) => {
-    console.log('/store/test 호출');
-    res.json({'code':'S001'});
-})
+router.use('/store', store);
+
 
 //포트 연결
 router.listen(3002,()=>console.log(`http://localhost:3002`));
